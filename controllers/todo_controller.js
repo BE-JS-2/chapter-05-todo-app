@@ -120,7 +120,7 @@ class TodoController {
   }
   static async deleteTodo(req, res, next) {
     try {
-      const { id } = req.body;
+      const { id } = req.params;
       await Todo.destroy({
         where: {
           id,
@@ -129,7 +129,9 @@ class TodoController {
       res.status(200).json({
         message: "Success delete todo",
       });
-    } catch (error) {}
+    } catch (error) {
+        next(error)
+    }
   }
 }
 

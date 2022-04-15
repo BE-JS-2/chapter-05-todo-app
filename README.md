@@ -43,6 +43,7 @@ Jumat, 15 April 2022 jam 21.15
 ### Link ERD
 
 ```
+https://dbdiagram.io/d/61e79231bb7a646986fb47aa
 ```
 
 ### Link Postman

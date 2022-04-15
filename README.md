@@ -43,9 +43,11 @@ Jumat, 15 April 2022 jam 21.15
 ### Link ERD
 
 ```
+https://dbdiagram.io/d/62594b822514c97903384dec
 ```
 
 ### Link Postman
 
 ```
+di push di repo
 ```

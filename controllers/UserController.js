@@ -2,6 +2,7 @@ const { User, Todos } = require('../models')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const { sequelize } = require('../models')
+const config = require('../config/env').get(process.env.NODE_ENV);
 class UserController {
     static async register (req, res) {
        const user = await User.create({
@@ -36,8 +37,7 @@ class UserController {
        } else {
          if (bcrypt.compareSync(req.body.password, user.password)) {
            // mengeluarkan token
-           console.log(user)
-           let token = jwt.sign({ id: user.id, username: user.username });
+           let token = jwt.sign({ id: user.id, username: user.username }, config.SECRET);
            res.status(200).json({
              message: 'Login success',
              token,

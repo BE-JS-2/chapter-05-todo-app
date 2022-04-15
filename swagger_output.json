@@ -22,10 +22,10 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "sumanto"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "adminqwerty"
                 }
               }
             }
@@ -40,7 +40,7 @@
     },
     "/login": {
       "post": {
-        "description": "",
+        "description": "Login user menggunakan name dan password",
         "parameters": [
           {
             "name": "body",

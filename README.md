@@ -34,7 +34,7 @@ Semua fitur tambahan tidak wajib dikerjakan.
 5. [x] Password user wajib di-enkrip / hash
 6. [x] Untuk token, gunakan JSOnWebToken
 7. [x] Wajib gunakan validasi saat membuat dan mengedit data kegiatan (semua field required)
-8. [ ] Buat dokumentasinya menggunakan Swagger (wajib) dan Postman (tidak wajib)
+8. [x] Buat dokumentasinya menggunakan Swagger (wajib) dan Postman (tidak wajib)
 
 ### Deadline
 
@@ -49,4 +49,5 @@ https://dbdiagram.io/d/625833162514c9790330be90
 ### Link Postman
 
 ```
+https://documenter.getpostman.com/view/19302442/Uyr4M1kA
 ```

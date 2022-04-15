@@ -105,7 +105,22 @@
       },
       "get": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "completed",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

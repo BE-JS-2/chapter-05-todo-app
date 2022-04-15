@@ -1,0 +1,31 @@
+{
+  "name": "chapter-05-todo-app",
+  "version": "1.0.0",
+  "description": "- Memahami cara menggunakan express untuk membuat API\r - Memahami cara kerja middleware\r - Memahami menggunakan sequelize untuk berinteraksi dengan database\r - Memahami cara membuat dokumentasi menggunakan Swagger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BE-JS-2/chapter-05-todo-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BE-JS-2/chapter-05-todo-app/issues"
+  },
+  "homepage": "https://github.com/BE-JS-2/chapter-05-todo-app#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.3",
+    "sequelize": "^6.19.0",
+    "sequelize-cli": "^6.4.1",
+    "swagger-autogen": "^2.21.0",
+    "swagger-ui-express": "^4.3.0"
+  }
+}

@@ -33,16 +33,14 @@ class ActivityController {
   static async list(req, res, next) {
     try {
       console.log(req.query);
-      let where;
+      let where = { userId: req.user.id };
       if (req.query) {
         if (req.query.completed) {
-          where = { completed: req.query.completed };
+          where.completed = req.query.completed;
         }
         if (req.query.category) {
-          where = { category: req.query.category };
+          where.category = req.query.category;
         }
-      } else {
-        where = {};
       }
 
       let page = req.query.page ? req.query.page : 1;

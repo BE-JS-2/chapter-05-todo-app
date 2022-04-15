@@ -1,12 +1,13 @@
 const { Todo } = require("../models");
 const sequelize = require("sequelize");
 const { User, Category } = require("../models");
-const dayjs = require('dayjs');
+const dayjs = require("dayjs");
 
 class TodoController {
   static async addTodo(req, res, next) {
     try {
-      const { user_id, category_id, name, description, due_date, completed } = req.body;
+      const { user_id, category_id, name, description, due_date, completed } =
+        req.body;
       const todo = await Todo.create({
         user_id,
         category_id,
@@ -25,6 +26,41 @@ class TodoController {
   }
   static async getAllTodos(req, res, next) {
     try {
+      if (req.query.completed !== undefined) {
+        const { completed } = req.query;
+        const todos = await Todo.findAll({
+          where: {
+            completed,
+          },
+          attributes: ["name", "completed"],
+        });
+        if (todos === null)
+          throw {
+            status: 404,
+            message: "Not found",
+          };
+        return res.status(200).json(todos);
+      }
+      if(req.query.category !== undefined ){
+        const { category } = req.query;
+        const todos = await Todo.findAll({
+            include: {
+                model: Category,
+                as: 'category',
+                attributes: []
+            },
+          where: {
+            category_id: category,
+          },
+          attributes: ["name", [sequelize.literal('"category"."name"'), 'category_name']],
+        });
+        if (todos === null)
+          throw {
+            status: 404,
+            message: "Not found",
+          };
+        return res.status(200).json(todos);
+      }
       const todos = await Todo.findAll({
         attributes: ["name", "completed"],
       });
@@ -38,6 +74,7 @@ class TodoController {
       next(error);
     }
   }
+
   static async getTodoById(req, res, next) {
     const { id } = req.params;
     try {
@@ -80,10 +117,10 @@ class TodoController {
     try {
       const { id } = req.params;
       const oldtodo = await Todo.findOne({
-          where: {
-              id,
-          }
-      })
+        where: {
+          id,
+        },
+      });
       const {
         user_id = oldtodo.user_id,
         category_id,
@@ -112,7 +149,7 @@ class TodoController {
         }
       );
       res.status(200).json({
-          message: 'Successfully updated todo'
+        message: "Successfully updated todo",
       });
     } catch (error) {
       next(error);
@@ -130,7 +167,7 @@ class TodoController {
         message: "Success delete todo",
       });
     } catch (error) {
-        next(error)
+      next(error);
     }
   }
 }

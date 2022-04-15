@@ -12,15 +12,36 @@ module.exports = {
          * }], {});
          */
         await queryInterface.bulkInsert('todos', [{
-            userId: 1,
-            categoryId: 1,
-            title: 'Demo Todo',
-            description: 'Demo Todo Description',
-            duedate: '2020-02-14',
-            completed: false,
-            createdAt: new Date(),
-            updatedAt: new Date()
-        }], {});
+                userId: 1,
+                categoryId: 1,
+                title: 'Demo Todo',
+                description: 'Demo Todo Description',
+                duedate: '2020-02-14',
+                completed: false,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                userId: 2,
+                categoryId: 1,
+                title: 'Demo Todo 2',
+                description: 'Demo Todo Description',
+                duedate: '2020-02-14',
+                completed: false,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                userId: 2,
+                categoryId: 1,
+                title: 'Demo Todo 3',
+                description: 'Demo Todo Description',
+                duedate: '2020-02-14',
+                completed: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }
+        ], {});
     },
 
     async down(queryInterface, Sequelize) {

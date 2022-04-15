@@ -1,0 +1,603 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "REST API",
+        "description": ""
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+        "/todos": {
+            "get": {
+                "description": "",
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "completed",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "todos": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string",
+                                                "example": "Learn React"
+                                            },
+                                            "completed": {
+                                                "type": "boolean",
+                                                "example": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Unauthorized denied"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/todo": {
+            "post": {
+                "description": "",
+                "parameters": [{
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "categoryId": {
+                                    "type": "integer",
+                                    "example": "1",
+                                    "required": true
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "example": "test",
+                                    "required": true
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "test test",
+                                    "required": true
+                                },
+                                "duedate": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "required": true
+                                },
+                                "completed": {
+                                    "type": "boolean",
+                                    "example": "false",
+                                    "required": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "categoryId": {
+                                    "type": "integer",
+                                    "example": "1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "example": "test"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "test test"
+                                },
+                                "duedate": {
+                                    "type": "string",
+                                    "format": "date"
+                                },
+                                "completed": {
+                                    "type": "boolean",
+                                    "example": "false"
+                                },
+                                "userId": {
+                                    "type": "integer",
+                                    "example": "1"
+                                },
+                                "updatedAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "msg": {
+                                                        "type": "string",
+                                                        "example": "The title field is required."
+                                                    },
+                                                    "param": {
+                                                        "type": "string",
+                                                        "example": "title"
+                                                    },
+                                                    "location": {
+                                                        "type": "string",
+                                                        "example": "body"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Unauthorized denied"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/todo/{id}": {
+            "put": {
+                "description": "",
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "categoryId": {
+                                    "type": "integer",
+                                    "example": "1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "example": "test"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "test test"
+                                },
+                                "duedate": {
+                                    "type": "string",
+                                    "format": "date"
+                                },
+                                "completed": {
+                                    "type": "boolean",
+                                    "example": "false"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "msg": {
+                                                        "type": "string",
+                                                        "example": "The title field is required."
+                                                    },
+                                                    "param": {
+                                                        "type": "string",
+                                                        "example": "title"
+                                                    },
+                                                    "location": {
+                                                        "type": "string",
+                                                        "example": "body"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Todo not found",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Todo not found"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized denied",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Unauthorized denied"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "",
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Todo not found",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Todo not found"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized denied",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Unauthorized denied"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "description": "Get Detail Todo",
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "findTodo": {
+                                    "type": "object",
+                                    "properties": {
+                                        "categoryId": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "test"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "test test"
+                                        },
+                                        "duedate": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "completed": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        },
+                                        "userId": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "createdAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Todo not found",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Todo not found"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Unauthorized denied"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/register": {
+            "put": {
+                "description": "",
+                "parameters": [{
+                    "name": "body",
+                    "in": "body",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "username": {
+                                "type": "string",
+                                "example": "test",
+                                "required": true
+                            },
+                            "password": {
+                                "type": "string",
+                                "example": "test",
+                                "required": true
+                            },
+                            "name": {
+                                "type": "string",
+                                "example": "test test",
+                                "required": true
+                            },
+                            "birhtdate": {
+                                "type": "date",
+                                "example": "2018-01-01",
+                                "required": true
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "example": "test",
+                                    "required": true
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "example": "test",
+                                    "required": true
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "example": "test test",
+                                    "required": true
+                                },
+                                "birhtdate": {
+                                    "type": "date",
+                                    "example": "2018-01-01",
+                                    "required": true
+                                },
+                                "updatedAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "required": true
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "required": true
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "msg": {
+                                                        "type": "string",
+                                                        "example": "The title field is required."
+                                                    },
+                                                    "param": {
+                                                        "type": "string",
+                                                        "example": "title"
+                                                    },
+                                                    "location": {
+                                                        "type": "string",
+                                                        "example": "body"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "description": "",
+                "parameters": [{
+                    "name": "body",
+                    "in": "body",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "username": {
+                                "type": "string",
+                                "example": "test",
+                                "required": true
+                            },
+                            "password": {
+                                "type": "string",
+                                "example": "test",
+                                "required": true
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "token": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username or password",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Invalid username or password"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

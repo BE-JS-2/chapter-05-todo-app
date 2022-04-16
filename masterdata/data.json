@@ -1,0 +1,56 @@
+{
+    "Users":[
+        {
+            "id": 1,
+            "fullname": "Ahmad Kurniawan",
+            "username": "kurniawan",
+            "password": "12345"
+        },
+        {
+            "id": 2,
+            "fullname": "Edi Susanto",
+            "username": "susanto",
+            "password": "12345"
+        },
+        {
+            "id": 3,
+            "fullname": "Luhut Panjahitan",
+            "username": "susanti",
+            "password": "12345"
+        }
+    ],
+    "Todos":[
+        {
+            "id": 1,
+            "name": "Nugas PJOK",
+            "due_date": "2022-04-15",
+            "category": "Sport",
+            "completed": true,
+            "userId": 1
+        },
+        {
+            "id": 2,
+            "name": "Nugas Pepak",
+            "due_date": "2022-04-15",
+            "category": "Homework",
+            "completed": true,
+            "userId": 2
+        },
+        {
+            "id": 3,
+            "name": "Nugas Matematika",
+            "due_date": "2022-04-14",
+            "category": "Education",
+            "completed": true,
+            "userId": 3
+        },
+        {
+            "id": 4,
+            "name": "Jalan Jalan Sore",
+            "due_date": "2022-04-15",
+            "category": "Education",
+            "completed": false,
+            "userId": 3
+        }
+    ]
+}

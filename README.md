@@ -1,16 +1,18 @@
 # chapter-05-todo-app
 
 ## Objectives
+
 - Memahami cara menggunakan express untuk membuat API
 - Memahami cara kerja middleware
 - Memahami menggunakan sequelize untuk berinteraksi dengan database
 - Memahami cara membuat dokumentasi menggunakan Swagger
 
-
 ## App requirement
 
 ### Features
+
 Buatlah sebuah aplikasi yang berguna untuk mencatatkan semua hal-hal yang harus kalian lakukan (Todo App). Setiap data kegiatan yang ada wajib memiliki kategori. Aplikasi harus memiliki fitur-fitur sebagai berikut:
+
 1. Registrasi user (atribut user dibebaskan, namun wajib ada username dan password)
 2. Login user
 3. Menambahkan data kegiatan yang harus dilakukan (atribut yang wajib ada adalah: nama, due date, kategori, dan completed (untuk menunjukkan apakah data kegiatan sudah dilakukan oleh user atau belum))
@@ -19,11 +21,12 @@ Buatlah sebuah aplikasi yang berguna untuk mencatatkan semua hal-hal yang harus 
 6. Menghapus data kegiatan
 
 Fitur tambahan (bisa dikerjakan di API list data kegiatan)
+
 1. Buatlah fitur untuk filtering data kegiatan berdasarkan completed (sudah dikerjakan atau belum)
 2. Buatlah fitur untuk filtering data kegiatan berdasarkan kategori
 3. Buatlah fitur pagination
 
-Semua fitur tambahan tidak wajib dikerjakan. 
+Semua fitur tambahan tidak wajib dikerjakan.
 
 ### Requirements
 
@@ -43,9 +46,11 @@ Jumat, 15 April 2022 jam 21.15
 ### Link ERD
 
 ```
+https://dbdiagram.io/d/62592f812514c97903376984
 ```
 
 ### Link Postman
 
 ```
+https://documenter.getpostman.com/view/20544566/Uyr5nK28
 ```

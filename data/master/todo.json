@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Tugas Matematika",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur mauris turpis, auctor scelerisque tellus pretium vel. Sed scelerisque finibus imperdiet. Ut accumsan consectetur diam, vitae varius lectus varius sed. Praesent sit amet pharetra lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ornare pellentesque neque, sit amet interdum tellus fermentum et. Proin eleifend tortor at lorem maximus, vitae feugiat mi semper. Integer a justo nec mi dictum dictum. Pellentesque malesuada eleifend leo, id varius odio bibendum et. Curabitur et erat efficitur, sodales urna ut, bibendum arcu.",
+    "dueDate": "2022-06-06",
+    "completed": false,
+    "categoryId": 2,
+    "userId":1
+  }
+]

@@ -1,0 +1,357 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Binar Todo",
+    "description": "Todo App",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/register/": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "message":{
+                  "example":"User created successfully"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema":{
+              "type":"object",
+              "properties":{
+                  "message": {
+                    "type":"array",
+                    "items":{
+                      "type":"object",
+                      "properties":{
+                          "username": {"example":"already in use"},
+                          "password": {"example":"value not found"}}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "akdev"
+                },
+                "password": {
+                  "example": "akdev"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "token":{
+                  "example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJha2RldiIsImlhdCI6MTY1MDI3Mjk0MX0.9AXePsqhzFErLLoefIbHYefqlSeKXZ3P9YDmDUCnxf8"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "message":{
+                  "example":"Invalid username or password"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todos/": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "completed",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "categoryId",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "example": 1
+                  },
+                  "name": {
+                    "example": "Tugas matematika"
+                  },
+                  "completed": {
+                    "example": false
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "example": "Unathorized request"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Add todo",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Ngoding pagi"
+                },
+                "description": {
+                  "example": "Ngoding pagi"
+                },
+                "due_date": {
+                  "example": "2022-06-06"
+                },
+                "categoryId": {
+                  "example": 1
+                },
+                "completed": {
+                  "example": false
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "example": "Successfully create todo"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "example": "Unauthorized request"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request/Invalid input",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "msg": {
+                    "example": "Invalid value"
+                  },
+                  "param": {
+                    "example": "name"
+                  },
+                  "location": {
+                    "example": "body"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todos/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": 1
+                },
+                "name": {
+                  "example": "Ngoding pagi Kotlin"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "example": "Todo not found"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "example": "Unauthorized request"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully update todo"
+          },
+          "404": {
+            "description": "Created",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "message":{
+                  "example":"Todo not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "message":{
+                  "example":"Succesfully delete todo"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Created",
+            "schema":{
+              "type":"object",
+              "properties":{
+                "message":{
+                  "example":"Todo not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
